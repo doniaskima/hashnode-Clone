@@ -51,22 +51,10 @@ const updateTag = async(req, res) => {
     }
 };
 
-// search by tag :))
-const search = async(req, res, next) => {
-    const query = req.query.q;
-    try {
-        const stories = await storyModels.find({
-            name: { $regex: query, $options: "i" },
-        }).limit(40);
-        res.status(200).json(stories);
-    } catch (err) {
-        return res.status(500).json(err);
-    }
-};
+ 
 
 module.exports.createTag = createTag;
 module.exports.getTags = getTags;
 module.exports.getTag = getTag;
 module.exports.deleteTag = deleteTag;
 module.exports.updateTag = updateTag;
-module.exports.search = search;

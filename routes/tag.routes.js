@@ -4,7 +4,8 @@ const {
     getTags,
     updateTag,
     deleteTag,
-    search
+    getByTag,
+  
 } = require("../controllers/tag.controllers");
 const tagModel = require("../models/tag.models");
 const router = require("express").Router();
@@ -30,5 +31,5 @@ router.get("/", getTags);
 router.get("/:tag", getTag);
 router.put("/:tag", updateTag);
 router.delete("/:tag", deleteTag);
-router.get("/search", search)
+
 module.exports = router;

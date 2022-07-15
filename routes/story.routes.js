@@ -4,6 +4,8 @@ const {
 	getStories,
 	updateStory,
 	deleteStory,
+	search,
+
 } = require("../controllers/story.controllers");
 const {
 	createComment,
@@ -86,4 +88,7 @@ router.get("/:story/reactions", getReactions);
 router.get("/:story/reactions/:reaction", getReaction);
 router.put("/:story/reactions/:reaction", updateReaction);
 router.delete("/:story/reactions/:reaction", deleteReaction);
+
+//search
+router.get("/search", search)
 module.exports = router;

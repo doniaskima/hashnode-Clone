@@ -184,7 +184,7 @@ const getBlogStories = async(req, res) => {
         return res.status(500).json(err);
     }
 };
-
+//add view
 const addView = async(req, res, next) => {
     try {
         await blogModels.findByIdAndUpdate(req.params.id, {

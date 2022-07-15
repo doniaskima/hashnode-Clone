@@ -72,9 +72,28 @@ const publishStory = async (req, res) => {
 		return res.status(500).json(err);
 	}
 };
+
+//search by tag :))
+const search = async(req, res, next) => {
+    const query = req.query.q;
+    try {
+        const stories = await storyModels.find({
+            title: { $regex: query, $options: "i" },
+        }).limit(40);
+        res.status(200).json(stories);
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+};
+
+ 
+
 module.exports.createStory = createStory;
 module.exports.getStories = getStories;
 module.exports.getStory = getStory;
 module.exports.deleteStory = deleteStory;
 module.exports.updateStory = updateStory;
 module.exports.publishStory = publishStory;
+module.exports.search = search;
+ 
+
