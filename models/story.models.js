@@ -4,6 +4,7 @@ const commentModels = require("./comment.models");
 const reactionModels = require("./reaction.models");
 const StorySchema = new mongoose.Schema(
 	{
+		views: { type: Number, default: 0 },
 		title: {
 			type: String,
 			minlength: 4,
@@ -28,7 +29,6 @@ StorySchema.pre("findOneAndDelete", async function (next) {
 	next();
 });
 StorySchema.pre("validate", function (next) {
-	
 	if (this.title) {
 		this.slugify(this.title);
 	}
