@@ -2,10 +2,15 @@ const profileModels = require("../models/profile.models");
 
 const createProfile = async(req, res) => {
     const newProfile = new profileModels({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        bio: req.body.bio,
         avatar: req.body.avatar,
-        AboutMe: req.body.AboutMe,
-        MyTechStack: req.body.MyTechStack,
-        Iam_available_for: req.body.Iam_available_for
+        linkedIn: req.body.linkedIn,
+        instagram: req.body.instagram,
+        github: req.body.github,
+        facebook: req.body.facebook,
+        owner: req.verifiedUser._id,
     });
     try {
         const savedProfile = await newProfile.save();
